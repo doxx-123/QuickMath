@@ -40,7 +40,8 @@ def answerChecker(userResponse, correctAns, elapsedTime):
     return isCorrect, pointsAwarded
 
 def speedMode():
-    """Provides multiple problems to be completed within the time limit"""
+    """Provides multiple problems to be completed within the time limit.
+    Returns the total points accumulated within the time limit."""
     timeLimit = 60 #1 minute
     startTime = time.time()
     endTime = 0
