@@ -3,16 +3,6 @@ Student B: Timing & Validation
 Author: Diana Quach
 Date: 2026-03-27
 """
-"""Student B: Timing & Validation
-- Track time per problem: record time.time() before displaying the question, and again after the student
-answers; compute elapsed time
-- Validate numeric input
-- Check answer correctness
-- Award bonus points for speed (faster = more points, based on elapsed time)
-- For Speed Mode: track total elapsed time across all problems and end the round when the limit is
-reached
-- Note: a live countdown display is not possible in a standard terminal. Use post-answer elapsed time for
-all timing logic."""
 
 import time
 
@@ -48,12 +38,10 @@ def answerChecker(userResponse, correctAns, elapsedTime):
     else:
         pointsAwarded = 0
     return isCorrect, pointsAwarded
-"""- For Speed Mode: track total elapsed time across all problems and end the round when the limit is
-reached"""
 
 def speedMode():
-    """Provides multiple problems to be completed within 2 minutes"""
-    timeLimit = 10 # seconds = 2 minutes
+    """Provides multiple problems to be completed within the time limit"""
+    timeLimit = 60 #1 minute
     startTime = time.time()
     endTime = 0
     points = 0
