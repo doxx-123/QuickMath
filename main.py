@@ -1,6 +1,13 @@
+"""
+Quick-Draw Math Challenge
+Authors: Retal Sabbahi, Diana Quach, Kareemat Adeagbo
+2026-03-28
+"""
+
 import problem_generation as stuA
 import StudentB_Diana as stuB
-# import Student C as stuC
+import StudentC as stuC
+
 """
 Temporary Key
     stuA.generateProblem(difficulty)            # returns problem, answer
@@ -8,17 +15,29 @@ Temporary Key
     stuB.answerChecker(response, answer, time)  # returns isCorrect, pointsAwarded
     stuB.speedMode()                            # returns answerKey, userAnswers
 """
+
 difficultyLevels = ["easy", "medium", "hard"]
-gameModes = ["!-temporary-!"]
-
+gameModes = ["speed", "accuracy", "streak"]
+print("=" * 50)
 print("Welcome to Quick-Draw Math!")
-difficulty = input(f"Select a Difficulty Level ({difficultyLevels}): ")
+print("=" * 50)
+
+difficulty = input(f"Select a Difficulty Level {difficultyLevels}\n Choice: ").lower()
 while difficulty not in difficultyLevels:
-    difficulty = input(f"INVALID \nSelect a Difficulty Level ({difficultyLevels}): ")
+    print(f" INVALID - please choose {difficultyLevels}")
+    difficulty = input(" Choice: ")
 
-"""gameMode = input(f"Choose a Game Mode ({gameModes}): ")
+print("-" * 50)
+gameMode = input(f"Select a Game Mode {gameModes}\n Choice: ").lower()
 while gameMode not in gameModes:
-    gameMode = input(f"INVALID \nChoose a Game Mode ({gameModes}): ")""" #ADD AFTER STUDENT B
+    print(f" INVALID - please choose {gameModes}")
+    gameMode = input(" Choice: ")
 
-# if gameMode == ...
+print("=" * 50)
+print(f"You've chosen {difficulty.title()} {gameMode.title()} Mode!")
+print("Let The Game Begin!")
+print("=" * 50)
+
+#if gameMode == ...
+#    stuC.GAMEMODE()
 
