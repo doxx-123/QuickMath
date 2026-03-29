@@ -6,8 +6,8 @@ Date: 2026-03-27
 """
 
 import time
-import problem_generation as stuA
-import StudentC as stuC
+#import problem_generation as stuA
+#import StudentC as stuC
 
 def timeResponseValidity(question):
     """
@@ -22,7 +22,8 @@ def timeResponseValidity(question):
     startTime = time.time()
     while isNumeric == False: # loops the question until the user enters a valid response (numeric)
         print("Response MUST be an integer")
-        userResponse = input(question)
+        #userResponse = input(question)
+        userResponse = input('What is the answer? ')
         isNumeric = True
         for character in userResponse:
             if character not in validCharacters:
@@ -43,16 +44,20 @@ def answerChecker(userResponse, correctAns, elapsedTime):
     if isCorrect == True: # 2 for bonus speed
         if elapsedTime <= 5:
             bonusPoints = 2
+        else:
+            bonusPoints = 0
     else:
         bonusPoints = 0
     return isCorrect, bonusPoints
-
+"""
 def speedMode(difficulty):
-    """
+
+
     Loops problem generation from Student C
     Ends the game once time limit is reached, allows final answer.
     Does not return anything, instead prints "TIME'S UP."
-    """
+    
+    
 
     timeLimit = 120 # <- seconds = 2 minutes
     startTime = time.time()
@@ -63,3 +68,5 @@ def speedMode(difficulty):
         endTime = time.time() # total elapsed time tracker
 
     print("TIME'S UP")
+    
+"""

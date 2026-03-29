@@ -1,13 +1,12 @@
-# Quick Draw Math Challenge
-# Authors: Kareemat Adeagbo, Retal Sabbahi, Diana Quach
-# 2026-3-28
+"""
+Student C: Game Modes & Scoring
+Author: Kareemat Adeagbo, Retal Sabbahi, Diana Quach
+Date: 2026-03-29
+"""
 
+import problem_generation
+import StudentB_Diana
 import time
-import problem_generation as stuA
-#from StudentB_Diana import answerChecker as stuB
-#from StudentB_Diana import timeResponseValidity as stuB
-from StudentB_Diana import answerChecker
-from StudentB_Diana import timeResponseValidity
 
 def calculateEndGameStats(stats):
     """Unified stats display across all modes."""
@@ -34,7 +33,7 @@ def calculateEndGameStats(stats):
     print("=" * 40)
 
 
-def runSpeedMode(difficulty):
+def runSpeedMode(difficulty='medium'):
     """Speed: 120s unlimited problems (uses Student B timing)."""
     print("\nSPEED MODE (120s): Solve as many as possible!")
     print("=" * 40)
@@ -46,12 +45,11 @@ def runSpeedMode(difficulty):
 
     while (time.time() - startTime) < timeLimit:
         # Student A: Generate problem
-        problemString, correctAns = stuA.generateProblem(difficulty)
+        problemString, correctAns = problem.generateProblem(difficulty = 'medium')
         print(f"\n{problemString}")
 
         # Student B: Time + validate input
-        #elapsed, userResp = stuB.timeResponseValidity(correctAns)
-        elapsed, userResp = timeResponseValidity(correctAns)
+        elapsed, userResp = timeResponseValidity("Answer: ")
 
         # Check if overtime
         if (time.time() - startTime) >= timeLimit:
@@ -78,7 +76,7 @@ def runSpeedMode(difficulty):
     return answerKey, [str(correctAns) for correctAns in answerKey]  # For analysis
 
 
-def runAccuracyMode(difficulty):
+def runAccuracyMode(difficulty='medium'):
     """Accuracy: Exactly 20 problems, -5pt penalties."""
     print("\nACCURACY MODE (20 problems): Precision matters!")
     print("=" * 40)
@@ -88,13 +86,10 @@ def runAccuracyMode(difficulty):
     answerKey = []
 
     for i in range(totalProblems):
-
-        problemString, correctAns = stuA.generateProblem(difficulty)
+        problemString, correctAns = problem.problemGeneration(difficulty= 'medium')
         print(f"\n#{i + 1}/20: {problemString}")
 
-       # elapsed, userResp = stuB.timeResponseValidity(correctAns)
-        elapsed, userResp = timeResponseValidity(correctAns)
-
+        elapsed, userResp = timeResponseValidity("Answer: ")
         attempted += 1
         answerKey.append(correctAns)
 
@@ -115,7 +110,7 @@ def runAccuracyMode(difficulty):
     return answerKey
 
 
-def runStreakMode(difficulty):
+def runStreakMode(difficulty='medium'):
     """Streak: Ends on first wrong, multipliers + time bonus."""
     print("\nSTREAK MODE: One wrong = GAME OVER!")
     print("=" * 40)
@@ -124,15 +119,13 @@ def runStreakMode(difficulty):
     answerKey = []
 
     while True:
-        problemString, correctAns = stuA.generateProblem(difficulty)
+        problemString, correctAns = problem.problemGeneration(difficulty= 'medium')
         print(f"\nStreak: {streak} | {problemString}")
 
-        #elapsed, userResp = stuB.timeResponseValidity(correctAns)
-        elapsed, userResp = timeResponseValidity(problemString)
+        elapsed, userResp = timeResponseValidity("Answer: ")
         attempted += 1
         answerKey.append(correctAns)
 
-        #isCorrect, bonus = stuB.answerChecker(str(userResp), str(correctAns), elapsed)
         isCorrect, bonus = answerChecker(str(userResp), str(correctAns), elapsed)
         if isCorrect:
             streak += 1

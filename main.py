@@ -39,7 +39,21 @@ print(f"You've chosen {difficulty.title()} {gameMode.title()} Mode!")
 print("Let The Game Begin!")
 print("=" * 50)
 
-if gameMode == "Speed":
+if gameMode == "speed":
 
 #    stuC.GAMEMODE()
 
+    elapsedTime, user88Response = stuC.runSpeedMode(difficulty)
+
+if gameMode == "accuracy":
+
+#    stuC.GAMEMODE()
+
+    #elapsedTime, userResponse = stuC.runAccuracyMode(difficulty)
+
+    answerKey = stuC.runAccuracyMode(difficulty)
+if gameMode == "streak":
+
+#    stuC.GAMEMODE()
+
+    answerKey = stuC.runStreakMode(difficulty)
