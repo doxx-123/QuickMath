@@ -21,6 +21,7 @@ def timeResponseValidity(question):
 
     startTime = time.time()
     while isNumeric == False: # loops the question until the user enters a valid response (numeric)
+        print("Response MUST be an integer")
         userResponse = input(question)
         isNumeric = True
         for character in userResponse:
