@@ -57,8 +57,6 @@ def speedMode(difficulty):
     timeLimit = 120 # <- seconds = 2 minutes
     startTime = time.time()
     endTime = 0
-    answerKey = []
-    userAnswers = []
 
     while (endTime - startTime) < timeLimit: # continues if elapsed time is less than the limit
         stuC.runSpeedmode(difficulty)
