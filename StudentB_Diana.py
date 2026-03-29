@@ -6,6 +6,8 @@ Date: 2026-03-27
 """
 
 import time
+import problem_generation as stuA
+
 
 def timeResponseValidity(question):
     """
@@ -44,7 +46,7 @@ def answerChecker(userResponse, correctAns, elapsedTime):
         bonusPoints = 0
     return isCorrect, bonusPoints
 
-def speedMode():
+def speedMode(difficultyLevel):
     """
     Provides multiple problems to be completed within the time limit.
     Ends the game once time limit is reached, allows final answer.
@@ -59,7 +61,7 @@ def speedMode():
     userAnswers = []
 
     while (endTime - startTime) < timeLimit:
-        problem, answer = "3 + 2", "5" #generateProblem(difficultyLevel) # relies on Student A
+        problem, answer = stuA.generateProblem(difficultyLevel)
         elapsedTime, userResponse = timeResponseValidity(problem)
         answerKey.append(str(answer))
         endTime = time.time() # total time tracker

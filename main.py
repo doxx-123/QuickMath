@@ -14,6 +14,7 @@ Temporary Key
     stuB.timeResponseValidity(question)         # returns elapsedTime per problem, userResponse
     stuB.answerChecker(response, answer, time)  # returns isCorrect, bonusPoints
     stuB.speedMode()                            # returns answerKey, userAnswers
+    stuC.runSpeedmode(difficulty)               # returns 
 """
 
 difficultyLevels = ["easy", "medium", "hard"]
@@ -38,6 +39,7 @@ print(f"You've chosen {difficulty.title()} {gameMode.title()} Mode!")
 print("Let The Game Begin!")
 print("=" * 50)
 
-#if gameMode == ...
+if gameMode == "Speed":
+
 #    stuC.GAMEMODE()
 

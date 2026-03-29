@@ -7,9 +7,9 @@ def runSpeedmode(difficulty):
     Runs the 2-minute speed mode game loop.
     :param difficulty: 'easy', 'medium', or 'hard' to pass to the problem generator.
     """
-    print("\n" + "="*30)
+    print("\n" + "="*50)
     print("Speed Mode: 2 Minutes")
-    print("="*30)
+    print("="*50)
     #Game State variables
     problemsAttempted = 0
     timeLimit = 120 #  2 minutes in seconds
@@ -47,9 +47,9 @@ def runSpeedmode(difficulty):
             print(f"Time remaining: {int(timeLeft)} seconds.")
     #--- End of Game ---
     totalTimeSpent = time.time() - stateTime
-    print("\n" + "="*30)
+    print("\n" + "="*50)
     print("Time's up!")
-    print("="*30)
+    print("="*50)
     #Return the final stats so the stats screen can display them
     return {
         "mode": "Speed",
@@ -86,9 +86,9 @@ def runStreakmode(difficulty):
     Runs the Streak Mode game loop (Sudden Death).
     The game ends as soon as the player gets one answer wrong.
     """
-    print("\n" + "="*30)
+    print("\n" + "="*50)
     print("Streak Mode: Sudden Death")
-    print("="*30)
+    print("="*50)
     print("Keep answering correctly to build multiplier.")
     print("One wrong answer ends the game!\n")
 
@@ -226,9 +226,9 @@ def runAccuracymode(difficulty):
     Runs the Accuracy Mode game loop (20 questions).
     :param difficulty: 'easy', 'medium' or 'hard' to pass to the problem generator.
     """
-    print("\n" + "="*30)
+    print("\n" + "="*50)
     print("Accuracy Mode: 20 Problems")
-    print("="*30)
+    print("="*50)
     print("Take your time. Mistakes will cost you points!\n")
     #Game State Varibales
     totalProblems = 20
@@ -271,9 +271,9 @@ def runAccuracymode(difficulty):
             print(f"Penalty applied: (-{penalty}pts)| Score: {currentScore}\n")
     # --- End of Game ---
     totalTimeSpent = time.time() - startTime
-    print("="*30)
+    print("="*50)
     print("Accuracy Mode Complete!")
-    print("="*30)
+    print("="*50)
     # Return the final stats
     return {
         "mode": "Accuracy",
