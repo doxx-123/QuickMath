@@ -1,3 +1,4 @@
+#Retal Sabbahi
 import random
 
 def generateAddition(minVal, maxVal):
@@ -57,22 +58,25 @@ def generateMultiplication(minVal, maxVal):
 
 def generateDivision(minVal, maxVal):
     """
-    Generates a random division problem ensuring an integer result.
+    Generates a random division problem ensuring an integer result and both the dividend and divisor are between the minVal and maxVal
 
     :param minVal: minimum number for the divisor and the answer
     :param maxVal: maximum number for the divisor and the answer
     :return: A tuple containing (problemString, correctAnswer)
     """
-    # Step 1: Pick a random divisor and a random answer
+    # 1. Pick a valid divisor in the range
     divisor = random.randint(minVal, maxVal)
-    correctAnswer = random.randint(minVal, maxVal)
 
-    # Step 2: Multiply them to get the starting number (dividend)
+    # 2. Find the highest possible answer so the dividend stays under maxVal
+    max_answer = maxVal // divisor
+
+    # 3. Pick the answer (which acts as our multiplier)
+    correctAnswer = random.randint(1, max_answer)
+
+    # 4. Calculate the dividend
     dividend = divisor * correctAnswer
 
-    # Step 3: Create the string so the user sees dividend / divisor
     problemString = f"{dividend} / {divisor}"
-
     return problemString, correctAnswer
 
 
@@ -107,3 +111,4 @@ def generateProblem(difficultyLevel):
         return generateMultiplication(minVal, maxVal)
     elif chosenOperation == 'divide':
         return generateDivision(minVal, maxVal)
+
