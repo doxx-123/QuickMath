@@ -2,7 +2,7 @@ import time
 import problem_generation
 
 #Speed mode
-def runSpeedmode(difficulty="medium"):
+def runSpeedmode(difficulty):
     """
     Runs the 2-minute speed mode game loop.
     :param difficulty: 'easy', 'medium', or 'hard' to pass to the problem generator.
@@ -81,7 +81,7 @@ print(f"Score is now: {currentScore}")
 
 
 #Streak mode
-def runStreakmode(difficulty="medium"):
+def runStreakmode(difficulty):
     """
     Runs the Streak Mode game loop (Sudden Death).
     The game ends as soon as the player gets one answer wrong.
@@ -221,7 +221,7 @@ def applyAccuracypenalty(currentScore, penaltyAmount=5):
     return newScore
 #Time trackers
 #Accuracy
-def runAccuracymode(difficulty="medium"):
+def runAccuracymode(difficulty):
     """
     Runs the Accuracy Mode game loop (20 questions).
     :param difficulty: 'easy', 'medium' or 'hard' to pass to the problem generator.
