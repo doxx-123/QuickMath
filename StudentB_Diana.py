@@ -48,9 +48,9 @@ def answerChecker(userResponse, correctAns, elapsedTime):
 
 def speedMode(difficulty):
     """
+    Loops problem generation from Student C
     Ends the game once time limit is reached, allows final answer.
-    Returns a list of correct answers (answerKey) and a list of user
-    responses (userAnswers).
+    Does not return anything, instead prints "TIME'S UP."
     """
 
     timeLimit = 120 # <- seconds = 2 minutes
@@ -61,16 +61,6 @@ def speedMode(difficulty):
 
     while (endTime - startTime) < timeLimit: # continues if elapsed time is less than the limit
         stuC.runSpeedmode(difficulty)
-        elapsedTime, userResponse = timeResponseValidity(problem)
-        #answerKey.append(str(answer))
         endTime = time.time() # total elapsed time tracker
 
-        #if (endTime - startTime) >= timeLimit: # total time elapsed exceeds time limit
-        #    userAnswers.append("-1") # after time limit, this answer will not match answer key, no points
-        #    print(f"TIME'S UP!")
-        #    return answerKey, userAnswers
-        #else:
-        #    userAnswers.append(userResponse) # adds to list of their response
-
     print("TIME'S UP")
-    return answerKey, userAnswers # comparing the two will tell you how many points should be awarded
