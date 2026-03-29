@@ -4,9 +4,9 @@ Authors: Retal Sabbahi, Diana Quach, Kareemat Adeagbo
 2026-03-28
 """
 
-import problem_generation as stuA
-import StudentB_Diana as stuB
-import StudentC as stuC
+import problem_generation as stuA # Student A: Problem Generation
+import StudentB_Diana as stuB # Student B: Timing & Validation
+import StudentC as stuC # Student C: Game Modes & Scoring
 
 """
 Temporary Key

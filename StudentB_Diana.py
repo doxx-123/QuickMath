@@ -7,7 +7,7 @@ Date: 2026-03-27
 
 import time
 import problem_generation as stuA
-
+import StudentC as stuC
 
 def timeResponseValidity(question):
     """
@@ -20,7 +20,7 @@ def timeResponseValidity(question):
     validCharacters = str([1,2,3,4,5,6,7,8,9,0]) # all answers will be in integer format
 
     startTime = time.time()
-    while isNumeric == False: # loops the question until the user enters a valid response
+    while isNumeric == False: # loops the question until the user enters a valid response (numeric)
         userResponse = input(question)
         isNumeric = True
         for character in userResponse:
@@ -38,7 +38,7 @@ def answerChecker(userResponse, correctAns, elapsedTime):
     Returns a boolean for correctness, and bonus points awarded.
     """
 
-    isCorrect = (userResponse == correctAns)
+    isCorrect = (userResponse == correctAns) # compares user response to correct answer
     if isCorrect == True: # 2 for bonus speed
         if elapsedTime <= 5:
             bonusPoints = 2
@@ -46,45 +46,31 @@ def answerChecker(userResponse, correctAns, elapsedTime):
         bonusPoints = 0
     return isCorrect, bonusPoints
 
-def speedMode(difficultyLevel):
+def speedMode(difficulty):
     """
-    Provides multiple problems to be completed within the time limit.
     Ends the game once time limit is reached, allows final answer.
     Returns a list of correct answers (answerKey) and a list of user
     responses (userAnswers).
     """
 
-    timeLimit = 10 # 2 minutes
+    timeLimit = 120 # <- seconds = 2 minutes
     startTime = time.time()
     endTime = 0
     answerKey = []
     userAnswers = []
 
-    while (endTime - startTime) < timeLimit:
-        problem, answer = stuA.generateProblem(difficultyLevel)
+    while (endTime - startTime) < timeLimit: # continues if elapsed time is less than the limit
+        stuC.runSpeedmode(difficulty)
         elapsedTime, userResponse = timeResponseValidity(problem)
-        answerKey.append(str(answer))
-        endTime = time.time() # total time tracker
+        #answerKey.append(str(answer))
+        endTime = time.time() # total elapsed time tracker
 
-        if (endTime - startTime) >= timeLimit: # total time elapsed exceeds time limit
-            userAnswers.append("0")
-            overTime = round((endTime - startTime ) - timeLimit, 2)
-            print(f"TIME'S UP!")
-            return answerKey, userAnswers
-        else:
-            userAnswers.append(userResponse)
-
-            #f"Answer NOT Accepted - overtime by {overTime} seconds")
-            #print("Total Points:", points)
-            #return points
+        #if (endTime - startTime) >= timeLimit: # total time elapsed exceeds time limit
+        #    userAnswers.append("-1") # after time limit, this answer will not match answer key, no points
+        #    print(f"TIME'S UP!")
+        #    return answerKey, userAnswers
         #else:
-            #correct, pointsAwarded = answerChecker(userResponse, answer, elapsedTime)
-            #points += pointsAwarded
-            #if correct == True:
-            #    print(f"CORRECT! +{pointsAwarded}")
-            #if correct == False:
-            #    print("INCORRECT!")
+        #    userAnswers.append(userResponse) # adds to list of their response
+
     print("TIME'S UP")
-    return answerKey, userAnswers
-    #print("Total Points:", points)
-    #return points
+    return answerKey, userAnswers # comparing the two will tell you how many points should be awarded
