@@ -12,7 +12,7 @@ import StudentC as stuC
 Temporary Key
     stuA.generateProblem(difficulty)            # returns problem, answer
     stuB.timeResponseValidity(question)         # returns elapsedTime per problem, userResponse
-    stuB.answerChecker(response, answer, time)  # returns isCorrect, pointsAwarded
+    stuB.answerChecker(response, answer, time)  # returns isCorrect, bonusPoints
     stuB.speedMode()                            # returns answerKey, userAnswers
 """
 
