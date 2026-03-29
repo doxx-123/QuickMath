@@ -46,8 +46,9 @@ def runSpeedMode(difficulty):
 
     while (time.time() - startTime) < timeLimit:
         # Student A: Generate problem
+        print("\nTIME REMAINING:", round(timeLimit - (time.time()-startTime), 2), "seconds!")
         problemString, correctAns = stuA.generateProblem(difficulty)
-        print(f"\n{problemString}")
+        print(problemString)
 
         # Student B: Time + validate input
         #elapsed, userResp = stuB.timeResponseValidity(correctAns)
