@@ -32,19 +32,17 @@ def timeResponseValidity(question):
 def answerChecker(userResponse, correctAns, elapsedTime):
     """
     Checks if the user responded with the correct answer and awards points accordingly.
-    User receives 5 points for a correct answer, and an additional 2 for a speedy answer (<=5 seconds).
-    Returns a boolean for correctness, and points awarded.
+    User receives an additional 2 points for a speedy and correct answer (<=5 seconds).
+    Returns a boolean for correctness, and bonus points awarded.
     """
 
     isCorrect = (userResponse == correctAns)
-    if isCorrect == True: # 5 for correct, 2 for bonus speed
+    if isCorrect == True: # 2 for bonus speed
         if elapsedTime <= 5:
-            pointsAwarded = 5 + 2
-        else:
-            pointsAwarded = 5
+            bonusPoints = 2
     else:
-        pointsAwarded = 0
-    return isCorrect, pointsAwarded
+        bonusPoints = 0
+    return isCorrect, bonusPoints
 
 def speedMode():
     """
