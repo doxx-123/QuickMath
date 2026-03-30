@@ -1,5 +1,5 @@
 # Quick Draw Math Challenge
-# Authors: Kareemat Adeagbo, Retal Sabbahi, Diana Quach
+# Authors: Kareemat Adeagbo
 # 2026-3-28
 
 import time
@@ -46,18 +46,25 @@ def runSpeedMode(difficulty):
 
     while (time.time() - startTime) < timeLimit:
         # Student A: Generate problem
-        print("\nTIME REMAINING:", round(timeLimit - (time.time()-startTime), 2), "seconds!")
+        print("\nTIME REMAINING:", round(timeLimit - (time.time() - startTime), 2), "seconds!")
         problemString, correctAns = stuA.generateProblem(difficulty)
         print(problemString)
 
         # Student B: Time + validate input
-        #elapsed, userResp = stuB.timeResponseValidity(correctAns)
         elapsed, userResp = timeResponseValidity(correctAns)
 
         # Check if overtime
         if (time.time() - startTime) >= timeLimit:
             print("TIME'S UP!")
-            break
+        else:
+            # Put all of your checking and scoring logic right here inside this else block!
+            # It will only run if they answered before the timer ran out.
+
+            if userResp == correctAns:
+                print("Correct!")
+                # Add points, track stats, etc.
+            else:
+                print("Incorrect!")
 
         attempted += 1
         answerKey.append(correctAns)
@@ -124,17 +131,21 @@ def runStreakMode(difficulty):
     streak, score, attempted, correct = 0, 0, 0, 0
     answerKey = []
 
-    while True:
+    # Create a control variable to run the loop
+    gameActive = True
+
+    while gameActive:
         problemString, correctAns = stuA.generateProblem(difficulty)
         print(f"\nStreak: {streak} | {problemString}")
 
-        #elapsed, userResp = stuB.timeResponseValidity(correctAns)
+        # elapsed, userResp = stuB.timeResponseValidity(correctAns)
         elapsed, userResp = timeResponseValidity(problemString)
         attempted += 1
         answerKey.append(correctAns)
 
-        #isCorrect, bonus = stuB.answerChecker(str(userResp), str(correctAns), elapsed)
+        # isCorrect, bonus = stuB.answerChecker(str(userResp), str(correctAns), elapsed)
         isCorrect, bonus = answerChecker(str(userResp), str(correctAns), elapsed)
+
         if isCorrect:
             streak += 1
             multiplier = 2.0 if streak >= 10 else 1.5 if streak >= 5 else 1.0
@@ -144,7 +155,8 @@ def runStreakMode(difficulty):
             print(f"CORRECT! +{points:.1f} pts ({multiplier}x +{bonus} time)")
         else:
             print(f"STREAK BROKEN! Ans: {correctAns}")
-            break
+            # Change the variable to False to naturally
+            gameActive = False
 
     calculateEndGameStats({
         "mode": "Streak", "attempted": attempted, "correct": correct,
